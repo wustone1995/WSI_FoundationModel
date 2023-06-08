@@ -1,5 +1,7 @@
-# [Model/Data/Code] Project Title 
+# [Model/Data/Code] INTELLIGENS: Providing Better Features for Whole Slide Image Based on Self-distillation 
 <!-- select Model and/or Data and/or Code as needed>
+**[Zhejiang Lab](https://www.zhejianglab.com/)**
+[[`Paper`](https://)] [[`Blog`](https://)] [[`Demo`](https://)] 
 ### Welcome to OpenMEDLab! 👋
 
 <!--
@@ -12,53 +14,12 @@
 -->
 
 
-<!-- Insert the project banner here -->
-<div align="center">
-    <a href="https://"><img width="1000px" height="auto" src="https://github.com/openmedlab/sampleProject/blob/main/banner_sample.png"></a>
-</div>
-
 ---
-
-<!-- Select some of the point info, feel free to delete -->
-[![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fopendilab)](https://twitter.com/opendilab)
-[![PyPI](https://img.shields.io/pypi/v/DI-engine)](https://pypi.org/project/DI-engine/)
-![Conda](https://anaconda.org/opendilab/di-engine/badges/version.svg)
-![Conda update](https://anaconda.org/opendilab/di-engine/badges/latest_release_date.svg)
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/DI-engine)
-![PyTorch Version](https://img.shields.io/badge/dynamic/json?color=blue&label=pytorch&query=%24.pytorchVersion&url=https%3A%2F%2Fgist.githubusercontent.com/PaParaZz1/54c5c44eeb94734e276b2ed5770eba8d/raw/85b94a54933a9369f8843cc2cea3546152a75661/badges.json)
-
-
-![Loc](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/HansBug/3690cccd811e4c5f771075c2f785c7bb/raw/loc.json)
-![Comments](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/HansBug/3690cccd811e4c5f771075c2f785c7bb/raw/comments.json)
-
-![Style](https://github.com/opendilab/DI-engine/actions/workflows/style.yml/badge.svg)
-![Docs](https://github.com/opendilab/DI-engine/actions/workflows/doc.yml/badge.svg)
-![Unittest](https://github.com/opendilab/DI-engine/actions/workflows/unit_test.yml/badge.svg)
-![Algotest](https://github.com/opendilab/DI-engine/actions/workflows/algo_test.yml/badge.svg)
-![deploy](https://github.com/opendilab/DI-engine/actions/workflows/deploy.yml/badge.svg)
-[![codecov](https://codecov.io/gh/opendilab/DI-engine/branch/main/graph/badge.svg?token=B0Q15JI301)](https://codecov.io/gh/opendilab/DI-engine)
-
-![GitHub Org's stars](https://img.shields.io/github/stars/opendilab)
-[![GitHub stars](https://img.shields.io/github/stars/opendilab/DI-engine)](https://github.com/opendilab/DI-engine/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/opendilab/DI-engine)](https://github.com/opendilab/DI-engine/network)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/opendilab/DI-engine)
-[![GitHub issues](https://img.shields.io/github/issues/opendilab/DI-engine)](https://github.com/opendilab/DI-engine/issues)
-[![GitHub pulls](https://img.shields.io/github/issues-pr/opendilab/DI-engine)](https://github.com/opendilab/DI-engine/pulls)
-[![Contributors](https://img.shields.io/github/contributors/opendilab/DI-engine)](https://github.com/opendilab/DI-engine/graphs/contributors)
-[![GitHub license](https://img.shields.io/github/license/opendilab/DI-engine)](https://github.com/opendilab/DI-engine/blob/master/LICENSE)
-
-Updated on 2023.05.25
-
-
 
 ## Key Features
 
-This repository provides the official implementation of ...
-
-key feature bulletin points here
-- 1
-- 2
-- 3
+This repository provides the official implementation and pretrained models for INTELLIGENS. For details, the related paper would be released soon.
+INTELLIGENS models produce robust and high-quality feature representations for whole slide image (WSI). The features can be directly employed with classifiers on slide-level multi-class subtyping problems. These trained models also perform well on patch-level classification tasks with slight fine-tuning. The models were pretrained on a dataset containing more than 10,000 WSIs without using any labels or annotations.
 
 ## Links
 
@@ -88,31 +49,51 @@ More intro text here.
 
 ## Get Started
 
-**Main Requirements**  
-> connected-components-3d  
-> h5py==3.6.0  
-> monai==0.9.0  
+**Some Main Requirements**  
+> Linux (Tested on Ubuntu 18.04)   
+> Python==3.9.16
+> Pytorch==2.0.0  
 > torch==1.11.0  
-> tqdm  
-> fastremap  
-
+> torchvision==0.15.0
+> openslide-python==1.2.0  
+> opencv-python==4.7.0.72 
+The training is performed using Pytorch on a Linux environment. It requires the main packages metioned above as well as a number of other 3rd party packages. To setup all the required dependencies for training and evaluation, please follow the instructions below:  
 **Installation**
+*[conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html)* **(Recommended)** - Clone the repository and then create and activate an `INTELLIGENS` conda environment using the provided environment definition `environment.yaml`:
 ```bash
-pip install DDD
+conda env create -f environment.yaml
+conda activate INTELLIGENS
+```
+*[pip](https://pip.pypa.io/en/stable/getting-started/)* - Clone the repository and then use the provided `requirements.txt` to install the dependencies:
+
+```bash
+pip install -r requirements.txt
 ```
 
-**Download Model**
-
-
-**Preprocess**
+**Data Preparation**
+The models were trained with a large WSI dataset, which contains more than 10,000 slides from multiple datasets, including about 6,000 slides from The Cancer Genome Atlas Program (TCGA), 1,000 slides from Camelyon17 and more than 3,000 private slides. For each slide, we used [CLAM](https://github.com/mahmoodlab/CLAM) to segment the tissue and exluding the blank areas, then extracted the patches within the segmented regions, saved the coordinates of patches in a .npy file. The following example assumes that the whole slide image data in well known standard formats (.svs, .tiff etc.) and the coordinates files are stored under a folder named DATA_DIRECTORY
 ```bash
-python DDD
+DATA_DIRECTORY/
+    SUBDATASET1/
+        ├── slide_1.svs
+        ├── slide_1.npy
+        ├── slide_2.svs
+        ├── slide_2.npy
+        └── ...
+    SUBDATASET2/
+	    ├── slide_1.tiff
+        ├── slide_1.npy
+        ├── slide_2.tiff
+        ├── slide_2.npy
+        └── ...
 ```
-
 
 **Training**
+This codebase was developed with Python version 3.9.16, PyTorch version 2.0.0, CUDA 11.7 and torchvision 0.15.0. The arguments used can be found in the `args` column of the [pretrained models section](https://github.com/facebookresearch/dino#pretrained-models). Following is a vanilla training implementation example on 1 nodes with 4 GPUs each (total 4 GPUs):
 ```bash
-python DDD
+python -m torch.distributed.launch --nproc_per_node=4 --nnodes=1 --node_rank=0 \
+--master_addr="xx.xxx.xxx.xxx" --master_port=xxxx  train.py --patch_size 16 \
+--arch "vit_base" --batch_size_per_gpu xxx --use_fp16 0 --output_dir ./output_dir 
 ```
 
 
