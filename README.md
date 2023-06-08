@@ -1,51 +1,6 @@
-# [Model/Data/Code] INTELLIGENS: Providing Better Features for Whole Slide Image Based on Self-distillation 
-<!-- select Model and/or Data and/or Code as needed>
+# INTELLIGENS: Providing Better Features for Whole Slide Image Based on Self-distillation 
 **[Zhejiang Lab](https://www.zhejianglab.com/)**
 [[`Paper`](https://)] [[`Blog`](https://)] [[`Demo`](https://)] 
-### Welcome to OpenMEDLab! 👋
-
-<!--
-**Here are some ideas to get you started:**
-🙋‍♀️ A short introduction - what is your organization all about?
-🌈 Contribution guidelines - how can the community get involved?
-👩‍💻 Useful resources - where can the community find your docs? Is there anything else the community should know?
-🍿 Fun facts - what does your team eat for breakfast?
-🧙 Remember, you can do mighty things with the power of [Markdown](https://docs.github.com/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
--->
-
-
----
-
-## Key Features
-
-This repository provides the official implementation and pretrained models for INTELLIGENS. For details, the related paper would be released soon.
-INTELLIGENS models produce robust and high-quality feature representations for whole slide image (WSI). The features can be directly employed with classifiers on slide-level multi-class subtyping problems. These trained models also perform well on patch-level classification tasks with slight fine-tuning. The models were pretrained on a dataset containing more than 10,000 WSIs without using any labels or annotations.
-
-## Links
-
-- [Paper](https://)
-- [Model](https://)
-- [Code](https://) 
-<!-- [Code] may link to your project at your institute>
-
-
-<!-- give a introduction of your project -->
-## Details
-
-intro text here.
-
-<!-- Insert a pipeline of your algorithm here if got one -->
-<div align="center">
-    <a href="https://"><img width="1000px" height="auto" src="https://github.com/openmedlab/sampleProject/blob/main/diagram_sample.png"></a>
-</div>
-
-More intro text here.
-
-
-## Dataset Links
-
-- [Liver Tumor Segmentation Challenge (LiTS)](https://competitions.codalab.org/competitions/17094#learn_the_details)
-- [Kidney and Kidney Tumor Segmentation (KiTS)](https://kits21.kits-challenge.org/participate#download-block)
 
 ## Get Started
 
