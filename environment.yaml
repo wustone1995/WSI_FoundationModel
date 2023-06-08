@@ -1,4 +1,4 @@
-name: LM
+name: INTELLIGENS
 channels:
   - pytorch
   - nvidia
@@ -225,4 +225,4 @@ dependencies:
       - zope-deprecation==5.0
       - zope-interface==6.0
       - zope-sqlalchemy==2.0
-prefix: /opt/anaconda3/envs/LM
+
