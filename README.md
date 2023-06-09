@@ -134,7 +134,7 @@ For this task, we adopted the multiple instance learning (MIL) framework and tes
     <td><a>TCGA-BRCA</a></td>
     <td><a>0.8897</a></td>
     <td><a>0.9224</a></td>
-    <td><a>args</a></td>
+    <td><a href="https://drive.google.com/file/d/1hQhp9sNUuOInB0vBZUgOsnmTfnU2YM2K/view?usp=sharing">args</a></td>
     <td><a href="https://drive.google.com/drive/folders/1aX58g3m__Vp0JHYgY37ZXUiRlWfMnkJX?usp=sharing">weights</a></td>
     <td><a>embeddings</a></td>
   </tr>
@@ -142,7 +142,7 @@ For this task, we adopted the multiple instance learning (MIL) framework and tes
     <td><a>TCGA-RCC</a></td>
     <td><a>0.9600</a></td>
     <td><a>0.9940</a></td>
-    <td><a>args</a></td>
+    <td><a href="https://drive.google.com/file/d/1g2RpwL_3mbCY-ObgWsI1Aw_hhFNLIGTA/view?usp=sharing">args</a></td>
     <td><a href="https://drive.google.com/drive/folders/1j507hbDXvWJP1slLRbt44DlztMg0qcDT?usp=sharing">weights</a></td>
     <td><a>embeddings</a></td>
   </tr>
@@ -150,7 +150,7 @@ For this task, we adopted the multiple instance learning (MIL) framework and tes
     <td><a>TCGA-NSCLC</a></td>
     <td><a>0.8878</a></td>
     <td><a>0.9539</a></td>
-    <td><a href="https://pan.baidu.com/s/1BGwhwRQh33PAubT3ovOoBw?pwd=0srj">args</a></td>
+    <td><a>args</a></td>
     <td><a>weights</a></td>
     <td><a>embeddings</a></td>
   </tr>
@@ -158,7 +158,7 @@ For this task, we adopted the multiple instance learning (MIL) framework and tes
     <td><a>CAMELYON16</a></td>
     <td><a>0.9535</a></td>
     <td><a>0.9756</a></td>
-    <td><a>args</a></td>
+    <td><a href="https://drive.google.com/file/d/1hi5RRSNQe0zt5Dk9vZ4KWfM5uwgZksUh/view?usp=sharing">args</a></td>
     <td><a href="https://drive.google.com/drive/folders/1HHhIyDTGRUyJX3XstCeKxK9fJUCROdYX?usp=sharing">weights</a></td>
     <td><a>embeddings</a></td>
   </tr>
@@ -186,7 +186,7 @@ python eval.py \
 
 
 
-Here, we provide an example using [CLAM](https://github.com/mahmoodlab/CLAM) as classifier for training and testing.  
+Here, we provide an example using [CLAM](https://github.com/mahmoodlab/CLAM) as classifier for training and testing on TCGA-BRCA dataset.  
 
 **Data Preparation**
 Download or generate the feature embeddings using the pre-trained models provided at [pretrained models section](https://github.com/wustone1995/WSI_FoundationModel#pretrained-models). 
@@ -205,6 +205,7 @@ FEAT_DIRECTORY/
         ├── slide_3.pt
         └── ...
 ```	
+The arguments used can be found in the `args` column of the [Slide-level multi-class subtyping task sections](https://github.com/wustone1995/WSI_FoundationModel#slide-level-multi-class-subtyping-task).
 Then train and test the model by 
 ```bash
 python train.py
