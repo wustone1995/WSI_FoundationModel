@@ -34,7 +34,7 @@ Please follow this repository for more updates.
     <td><a>backbone only</a></td>
     <td><a>full ckpt</a></td>
     <td><a>args</a></td>
-    <td><a>logs</a></td>>
+    <td><a>logs</a></td>
   </tr>
   <tr>
     <td>ViT-B/16 </td>
@@ -58,7 +58,7 @@ Please follow this repository for more updates.
     <td><a>backbone only</a></td>
     <td><a>full ckpt</a></td>
     <td><a>args</a></td>
-    <td><a>logs</a></td>>
+    <td><a>logs</a></td>
   </tr>
 </table>
 
@@ -122,22 +122,26 @@ python -m torch.distributed.launch --nproc_per_node=4 --nnodes=1 --node_rank=0 \
 ## Evaluation
 
 ### Slide-level multi-class subtyping task
-For this task, we adopted the multiple instance learning (MIL) framework. The features for each slides are pre-extracted due to the large scale of WSI. Then the MIL classifier is trained on these features according to the common practices. The extracted feature embeddings, the trained model's weights and the test resluts are provideed. You can easily reproduce the test results by downloading the feature embeddings and running
+For this task, we adopted the multiple instance learning (MIL) framework and test models' performance on several dataset, including TCGA-BRCA, TCGA-RCC, TCGA-NSCLC, [CAMELYON16](https://camelyon16.grand-challenge.org), [PANDA](https://panda.grand-challenge.org), etc. The features for each slides are pre-extracted due to the large scale of WSI. Then the MIL classifier is trained on these features according to the common practices. The extracted feature embeddings, the trained model's weights and the test resluts are provided:
+<table style="margin: auto">
+  <tr>
+    <th>Dataset</th>
+    <th>Acc</th>
+    <th>AUC</th>
+    <th colspan="2">download</th>
+  </tr>
+  <tr>
+    <td><a href="https://dl.fbaipublicfiles.com/dino/dino_deitsmall16_pretrain/dino_deitsmall16_pretrain.pth">TCGA-BRCA</a></td>
+    <td><a href="https://dl.fbaipublicfiles.com/dino/dino_deitsmall16_pretrain/dino_deitsmall16_pretrain_full_checkpoint.pth">full ckpt</a></td>
+    <td><a href="https://dl.fbaipublicfiles.com/dino/dino_deitsmall16_pretrain/args.txt">args</a></td>
+    <td><a href="https://dl.fbaipublicfiles.com/dino/dino_deitsmall16_pretrain/dino_deitsmall16_pretrain_log.txt">logs</a></td>
+  </tr>
+</table>
+You can easily reproduce the test results by downloading the feature embeddings and running
 ```bash
 python 
 ```
-<table style="margin: auto">
-  <tr>
-    <th>model</th>
-    <th>ImageNet<br />top-1</th>
-    <th>linear evaluation</th>
-  </tr>
-  <tr>
-    <td>ViT-S/14 distilled</td>
-    <td align="right">81.1%</td>
-    <td><a href="https://dl.fbaipublicfiles.com/dinov2/dinov2_vits14/dinov2_vits14_linear_head.pth">linear head weights</a></td>
-  </tr>
-</table>
+
 
 
 Here, we provide an example using [CLAM](https://github.com/mahmoodlab/CLAM) as classifier.  
