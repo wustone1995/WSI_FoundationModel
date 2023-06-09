@@ -39,7 +39,7 @@ Please follow this repository for more updates.
   <tr>
     <td>ViT-B/16 </td>
     <td align="right">0.11 B</td>
-    <td><a>backbone only</a></td>
+    <td><a href="https://drive.google.com/file/d/1sstrtERWP3TFDK6LxksJnIvd_bBebNCK/view?usp=sharing">backbone only</a></td>
     <td><a>full ckpt</a></td>
     <td><a>args</a></td>
     <td><a>logs</a></td>
@@ -132,25 +132,25 @@ For this task, we adopted the multiple instance learning (MIL) framework and tes
   </tr>
   <tr>
     <td><a>TCGA-BRCA</a></td>
-    <td><a>XX.XX</a></td>
-    <td><a>XX.XX</a></td>
+    <td><a>0.8897</a></td>
+    <td><a>0.9224</a></td>
     <td><a>args</a></td>
-    <td><a>weights</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1aX58g3m__Vp0JHYgY37ZXUiRlWfMnkJX?usp=sharing">weights</a></td>
     <td><a>embeddings</a></td>
   </tr>
   <tr>
     <td><a>TCGA-RCC</a></td>
-    <td><a>XX.XX</a></td>
-    <td><a>XX.XX</a></td>
+    <td><a>0.9600</a></td>
+    <td><a>0.9940</a></td>
     <td><a>args</a></td>
-    <td><a>weights</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1j507hbDXvWJP1slLRbt44DlztMg0qcDT?usp=sharing">weights</a></td>
     <td><a>embeddings</a></td>
   </tr>
   <tr>
     <td><a>TCGA-NSCLC</a></td>
     <td><a>0.8878</a></td>
     <td><a>0.9539</a></td>
-    <td><a>args</a></td>
+    <td><a href="https://pan.baidu.com/s/1BGwhwRQh33PAubT3ovOoBw?pwd=0srj">args</a></td>
     <td><a>weights</a></td>
     <td><a>embeddings</a></td>
   </tr>
@@ -159,7 +159,7 @@ For this task, we adopted the multiple instance learning (MIL) framework and tes
     <td><a>0.9535</a></td>
     <td><a>0.9756</a></td>
     <td><a>args</a></td>
-    <td><a>weights</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1HHhIyDTGRUyJX3XstCeKxK9fJUCROdYX?usp=sharing">weights</a></td>
     <td><a>embeddings</a></td>
   </tr>
   <tr>
@@ -174,7 +174,14 @@ For this task, we adopted the multiple instance learning (MIL) framework and tes
 You can easily reproduce the test results by downloading the feature embeddings and running
 
 ```bash
-python 
+python eval.py \
+    --dataset <name of dataset> \
+    --data_root_dir <directory to your data> \
+    --models_exp_code <directory to checkpoints> \
+    --save_exp_code <directory to save the eval results, it will be under ./results/> \
+    --labelcsv_dir <directory to save the eval results, which can be found at ./dataset_csv> \
+    --splits_dir <data split folder, which can be found at ./splits> \
+    --k <cross validation folds number>
 ```
 
 
