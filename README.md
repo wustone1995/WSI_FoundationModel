@@ -165,7 +165,7 @@ For this task, we adopted the multiple instance learning (MIL) framework and tes
     <td><a>0.9756</a></td>
     <td><a href="https://drive.google.com/file/d/1hi5RRSNQe0zt5Dk9vZ4KWfM5uwgZksUh/view?usp=sharing">args</a></td>
     <td><a href="https://drive.google.com/drive/folders/1HHhIyDTGRUyJX3XstCeKxK9fJUCROdYX?usp=sharing">weights</a></td>
-    <td><a>embeddings</a></td>
+    <td><a href="https://pan.baidu.com/s/1yu7NSaa1XygCHCXsDsroKg?pwd=e7o3">embeddings</a></td>
   </tr>
   <tr>
     <td><a>PANDA</a></td>
