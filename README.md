@@ -114,15 +114,18 @@ DATA_DIRECTORY/
 
 This codebase was developed with Python version 3.9.16, PyTorch version 2.0.0, CUDA 11.7 and torchvision 0.15.0. The arguments used can be found in the `args` column of the [pretrained models section](https://github.com/facebookresearch/dino#pretrained-models). Following is a vanilla training implementation example on 1 nodes with 4 GPUs (total 4 GPUs):
 ```bash
-python -m torch.distributed.launch --nproc_per_node=4 --nnodes=1 --node_rank=0 \
---master_addr="xx.xxx.xxx.xxx" --master_port=xxxx  train.py --patch_size 16 \
---arch "vit_base" --batch_size_per_gpu xxx --use_fp16 0 --output_dir ./output_dir 
+python -m torch.distributed.launch --nproc_per_node=4 \
+    --nnodes=1 --node_rank=0 \
+    --master_addr="xx.xxx.xxx.xxx" --master_port=xxxx  \
+    train.py --patch_size 16 \
+    --arch "vit_base" --batch_size_per_gpu xxx \
+    --use_fp16 0 --output_dir ./output_dir 
 ```
 
 ## Evaluation
 
 ### Slide-level multi-class subtyping task
-For this task, we adopted the multiple instance learning (MIL) framework and test models' performance on several dataset, including TCGA-BRCA, TCGA-RCC, TCGA-NSCLC, [CAMELYON16](https://camelyon16.grand-challenge.org), [PANDA](https://panda.grand-challenge.org), etc. The features for each slides are pre-extracted due to the large scale of WSI. Then the MIL classifier is trained on these features according to the common practices. The extracted feature embeddings, the trained models' weights and the test resluts are provided:
+For this task, we adopted the multiple instance learning (MIL) framework and test models' performance on several dataset, including [TCGA-BRCA](https://www.cancer.gov/ccg/research/genome-sequencing/tcga), [TCGA-RCC](https://www.cancer.gov/ccg/research/genome-sequencing/tcga), [TCGA-NSCLC](https://www.cancer.gov/ccg/research/genome-sequencing/tcga), [CAMELYON16](https://camelyon16.grand-challenge.org), [PANDA](https://panda.grand-challenge.org), etc. The features for each slides are pre-extracted due to the large scale of WSI. Then the MIL classifier is trained on these features according to the common practices. The extracted feature embeddings, the trained models' weights and the test resluts are provided:
 <table style="margin: auto">
   <tr>
     <th>Dataset</th>
@@ -184,8 +187,6 @@ python eval.py \
     --k <cross validation folds number>
 ```
 
-
-
 Here, we provide an example using [CLAM](https://github.com/mahmoodlab/CLAM) as classifier for training and testing on TCGA-BRCA dataset.  
 
 **Data Preparation**
@@ -193,23 +194,41 @@ Download or generate the feature embeddings using the pre-trained models provide
 ```bash
 cd feature_extract
 python extract_features.py \
---dataset CAM16 --data_root_path <data_root_path> --save_pt_path <path_saving_features> --modelpath <path_to_ckpt> --file_ext .tif
+    --dataset BRCA \
+    --data_root_path <data_root_path> \
+    --save_pt_path <path_saving_features> \
+    --modelpath <path_to_ckpt> \
+    --file_ext .svs
 ```
 The following example assumes the embedding files are stored under a folder named FEAT_DIRECTORY.
 
 ```bash
 FEAT_DIRECTORY/
-    <path_to_ckpt>/
+    <path_saving_features>/
         ├── slide_1.pt
         ├── slide_2.pt
         ├── slide_3.pt
         └── ...
 ```	
-The arguments used can be found in the `args` column of the [Slide-level multi-class subtyping task sections](https://github.com/wustone1995/WSI_FoundationModel#slide-level-multi-class-subtyping-task).
+The arguments used during training can be found in the `args` column of the [Slide-level multi-class subtyping task sections](https://github.com/wustone1995/WSI_FoundationModel#slide-level-multi-class-subtyping-task).
 Then train and test the model by 
 ```bash
-python train.py
-python test.py
+python main.py \
+    --data_root_dir <FEAT_DIRECTORY/path_saving_features> \
+    --split_dir 'BRCA_subtyping2' \
+    --exp_info 'experiment_task_2_tumor_subtyping_brca.txt' \
+    --csv_path 'dataset_csv/BRCA_subtyping2.csv' \
+    --label_dict "{'IDC':0, 'ILC':1}" \
+    --exp_code 'task_2_tumor_subtyping_brca'
+    
+python eval.py \
+    --dataset BRCA \
+    --data_root_dir <FEAT_DIRECTORY/path_saving_features> \
+    --models_exp_code 'task_2_tumor_subtyping_brca' \
+    --save_exp_code 'task_2_tumor_subtyping_brca' \
+    --labelcsv_dir 'dataset_csv/BRCA_subtyping2.csv' \
+    --splits_dir 'splits/BRCA_subtyping2' \
+    --k 10
 ```
 
 
