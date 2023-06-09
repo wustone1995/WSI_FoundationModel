@@ -124,6 +124,8 @@ python -m torch.distributed.launch --nproc_per_node=4 \
 
 ## Downstream Task
 
+You can use the models mentioned at [pretrained models section](https://github.com/wustone1995/WSI_FoundationModel#pretrained-models) for various downstream tasks. The model can be easily initialized with the backbone weights using the genmodel() function in `genmodel.py`. 
+
 ### Slide-level multi-class subtyping task
 For this task, we adopted the multiple instance learning (MIL) framework and test models' performance on several dataset, including [TCGA-BRCA](https://www.cancer.gov/ccg/research/genome-sequencing/tcga), [TCGA-RCC](https://www.cancer.gov/ccg/research/genome-sequencing/tcga), [TCGA-NSCLC](https://www.cancer.gov/ccg/research/genome-sequencing/tcga), [CAMELYON16](https://camelyon16.grand-challenge.org), [PANDA](https://panda.grand-challenge.org), etc. The features for each slides are pre-extracted due to the large scale of WSI. Then the MIL classifier is trained on these features according to the common practices. The extracted feature embeddings, the trained models' weights and the test resluts are provided:
 <table style="margin: auto">
@@ -192,7 +194,7 @@ Here, we provide an example using [CLAM](https://github.com/mahmoodlab/CLAM) as 
 **Data Preparation**
 Download or generate the feature embeddings using the pre-trained models provided at [pretrained models section](https://github.com/wustone1995/WSI_FoundationModel#pretrained-models). 
 ```bash
-cd feature_extract
+cd "Slide-level multi-class subtyping task/feature_extract"
 python extract_features.py \
     --dataset BRCA \
     --data_root_path <data_root_path> \
