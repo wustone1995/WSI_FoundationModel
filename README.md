@@ -22,7 +22,6 @@ Please follow this repository for more updates.
 
 
 ## Pretrained models
-
 <table style="margin: auto">
   <tr>
     <th>model</th>
@@ -68,12 +67,12 @@ Please follow this repository for more updates.
 
 **Some Main Requirements**  
 > Linux (Tested on Ubuntu 18.04)   
-> Python==3.9.16
+> Python==3.9.16  
 > Pytorch==2.0.0  
 > torch==1.11.0  
-> torchvision==0.15.0
+> torchvision==0.15.0    
 > openslide-python==1.2.0  
-> opencv-python==4.7.0.72 
+> opencv-python==4.7.0.72  
 
 
 The training is performed using Pytorch on a Linux environment. It requires the main packages metioned above as well as a number of other 3rd party packages. To setup all the required dependencies for training and evaluation, please follow the instructions below:  
@@ -113,7 +112,7 @@ DATA_DIRECTORY/
 ```
 ## Training
 
-This codebase was developed with Python version 3.9.16, PyTorch version 2.0.0, CUDA 11.7 and torchvision 0.15.0. The arguments used can be found in the `args` column of the [pretrained models section](https://github.com/facebookresearch/dino#pretrained-models). Following is a vanilla training implementation example on 1 nodes with 4 GPUs each (total 4 GPUs):
+This codebase was developed with Python version 3.9.16, PyTorch version 2.0.0, CUDA 11.7 and torchvision 0.15.0. The arguments used can be found in the `args` column of the [pretrained models section](https://github.com/facebookresearch/dino#pretrained-models). Following is a vanilla training implementation example on 1 nodes with 4 GPUs (total 4 GPUs):
 ```bash
 python -m torch.distributed.launch --nproc_per_node=4 --nnodes=1 --node_rank=0 \
 --master_addr="xx.xxx.xxx.xxx" --master_port=xxxx  train.py --patch_size 16 \
@@ -122,7 +121,23 @@ python -m torch.distributed.launch --nproc_per_node=4 --nnodes=1 --node_rank=0 \
 
 ## Evaluation
 
-**Slide-level multi-class subtyping task**
+### Slide-level multi-class subtyping task
+For this task, we adopted the multiple instance learning (MIL) framework. The features for each slides are pre-extracted due to the large scale of WSI. Then the MIL classifier is trained on these features according to the common practices. The extracted feature embeddings, the trained model's weights and the test resluts are provideed.
+<table style="margin: auto">
+  <tr>
+    <th>model</th>
+    <th>ImageNet<br />top-1</th>
+    <th>linear evaluation</th>
+  </tr>
+  <tr>
+    <td>ViT-S/14 distilled</td>
+    <td align="right">81.1%</td>
+    <td><a href="https://dl.fbaipublicfiles.com/dinov2/dinov2_vits14/dinov2_vits14_linear_head.pth">linear head weights</a></td>
+  </tr>
+</table>
+Here, we provide an example using [CLAM](https://github.com/mahmoodlab/CLAM) as classifier. 
+** Data Preparation **
+Download or generate the feature embeddings using the pre-trained model provided at [pretrained models section](https://github.com/wustone1995/WSI_FoundationModel#pretrained-models). [pretrained models section](https://github.com/facebookresearch/dino#pretrained-models)
 
 ```bash
 python DDD
