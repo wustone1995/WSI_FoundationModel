@@ -141,7 +141,7 @@ For this task, we adopted the multiple instance learning (MIL) framework and tes
     <td><a>0.9224</a></td>
     <td><a href="https://drive.google.com/file/d/1hQhp9sNUuOInB0vBZUgOsnmTfnU2YM2K/view?usp=sharing">args</a></td>
     <td><a href="https://drive.google.com/drive/folders/1aX58g3m__Vp0JHYgY37ZXUiRlWfMnkJX?usp=sharing">weights</a></td>
-    <td><a>embeddings</a></td>
+    <td><a href="https://pan.baidu.com/s/1KAZrwwTddlUNiyomJ6ZZaw?pwd=zh86">embeddings</a></td>
   </tr>
   <tr>
     <td><a>TCGA-RCC</a></td>
@@ -149,7 +149,7 @@ For this task, we adopted the multiple instance learning (MIL) framework and tes
     <td><a>0.9940</a></td>
     <td><a href="https://drive.google.com/file/d/1g2RpwL_3mbCY-ObgWsI1Aw_hhFNLIGTA/view?usp=sharing">args</a></td>
     <td><a href="https://drive.google.com/drive/folders/1j507hbDXvWJP1slLRbt44DlztMg0qcDT?usp=sharing">weights</a></td>
-    <td><a>embeddings</a></td>
+    <td><a href="https://pan.baidu.com/s/1jWhIuwFTA4yumG08lo7KAA?pwd=wsoc">embeddings</a></td>
   </tr>
   <tr>
     <td><a>TCGA-NSCLC</a></td>
