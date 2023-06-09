@@ -122,7 +122,7 @@ python -m torch.distributed.launch --nproc_per_node=4 \
     --use_fp16 0 --output_dir ./output_dir 
 ```
 
-## Evaluation
+## Downstream Task
 
 ### Slide-level multi-class subtyping task
 For this task, we adopted the multiple instance learning (MIL) framework and test models' performance on several dataset, including [TCGA-BRCA](https://www.cancer.gov/ccg/research/genome-sequencing/tcga), [TCGA-RCC](https://www.cancer.gov/ccg/research/genome-sequencing/tcga), [TCGA-NSCLC](https://www.cancer.gov/ccg/research/genome-sequencing/tcga), [CAMELYON16](https://camelyon16.grand-challenge.org), [PANDA](https://panda.grand-challenge.org), etc. The features for each slides are pre-extracted due to the large scale of WSI. Then the MIL classifier is trained on these features according to the common practices. The extracted feature embeddings, the trained models' weights and the test resluts are provided:
