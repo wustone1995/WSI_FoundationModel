@@ -39,10 +39,10 @@ Please follow this repository for more updates.
   <tr>
     <td>ViT-B/16 </td>
     <td align="right">86 M</td>
-    <td><a href="https://dl.fbaipublicfiles.com/dino/dino_deitsmall16_pretrain/dino_deitsmall16_pretrain.pth">backbone only</a></td>
-    <td><a href="https://dl.fbaipublicfiles.com/dino/dino_deitsmall16_pretrain/dino_deitsmall16_pretrain_full_checkpoint.pth">full ckpt</a></td>
-    <td><a href="https://dl.fbaipublicfiles.com/dino/dino_deitsmall16_pretrain/args.txt">args</a></td>
-    <td><a href="https://dl.fbaipublicfiles.com/dino/dino_deitsmall16_pretrain/dino_deitsmall16_pretrain_log.txt">logs</a></td>
+    <td><a>backbone only</a></td>
+    <td><a>full ckpt</a></td>
+    <td><a>args</a></td>
+    <td><a>logs</a></td>
   </tr>
   <tr>
     <td>ViT-L/16 </td>
