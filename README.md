@@ -184,13 +184,15 @@ Here, we provide an example using [CLAM](https://github.com/mahmoodlab/CLAM) as 
 **Data Preparation**
 Download or generate the feature embeddings using the pre-trained models provided at [pretrained models section](https://github.com/wustone1995/WSI_FoundationModel#pretrained-models). 
 ```bash
-python feature_extract.py
+cd feature_extract
+python extract_features.py \
+--dataset CAM16 --data_root_path <data_root_path> --save_pt_path <path_saving_features> --modelpath <path_to_ckpt> --file_ext .tif
 ```
 The following example assumes the embedding files are stored under a folder named FEAT_DIRECTORY.
 
 ```bash
 FEAT_DIRECTORY/
-    pt_files/
+    <path_to_ckpt>/
         ├── slide_1.pt
         ├── slide_2.pt
         ├── slide_3.pt
