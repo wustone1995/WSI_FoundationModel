@@ -104,7 +104,7 @@ DATA_DIRECTORY/
         ├── slide_2.npy
         └── ...
     SUBDATASET2/
-	    ├── slide_1.tiff
+    	├── slide_1.tiff
         ├── slide_1.npy
         ├── slide_2.tiff
         ├── slide_2.npy
@@ -122,7 +122,10 @@ python -m torch.distributed.launch --nproc_per_node=4 --nnodes=1 --node_rank=0 \
 ## Evaluation
 
 ### Slide-level multi-class subtyping task
-For this task, we adopted the multiple instance learning (MIL) framework. The features for each slides are pre-extracted due to the large scale of WSI. Then the MIL classifier is trained on these features according to the common practices. The extracted feature embeddings, the trained model's weights and the test resluts are provideed.
+For this task, we adopted the multiple instance learning (MIL) framework. The features for each slides are pre-extracted due to the large scale of WSI. Then the MIL classifier is trained on these features according to the common practices. The extracted feature embeddings, the trained model's weights and the test resluts are provideed. You can easily reproduce the test results by downloading the feature embeddings and running
+```bash
+python 
+```
 <table style="margin: auto">
   <tr>
     <th>model</th>
@@ -135,26 +138,29 @@ For this task, we adopted the multiple instance learning (MIL) framework. The fe
     <td><a href="https://dl.fbaipublicfiles.com/dinov2/dinov2_vits14/dinov2_vits14_linear_head.pth">linear head weights</a></td>
   </tr>
 </table>
-Here, we provide an example using [CLAM](https://github.com/mahmoodlab/CLAM) as classifier. 
-** Data Preparation **
-Download or generate the feature embeddings using the pre-trained model provided at [pretrained models section](https://github.com/wustone1995/WSI_FoundationModel#pretrained-models). [pretrained models section](https://github.com/facebookresearch/dino#pretrained-models)
 
+
+Here, we provide an example using [CLAM](https://github.com/mahmoodlab/CLAM) as classifier.  
+
+**Data Preparation**
+Download or generate the feature embeddings using the pre-trained models provided at [pretrained models section](https://github.com/wustone1995/WSI_FoundationModel#pretrained-models). The following example assumes the embedding files are stored under a folder named FEAT_DIRECTORY.
 ```bash
-python DDD
+python feature_extract.py
+```
+```bash
+FEAT_DIRECTORY/
+    pt_files/
+        ├── slide_1.pt
+        ├── slide_2.pt
+        ├── slide_3.pt
+        └── ...
+```	
+Then train and test the model by 
+```bash
+python train.py
+python test.py
 ```
 
-**Patch-level multi-class subtyping task**
-
-```bash
-python DDD
-```
-
-
-## 🙋‍♀️ Feedback and Contact
-
-- Email
-- Webpage 
-- Social media
 
 
 ## 🛡️ License
@@ -169,12 +175,5 @@ python DDD
 
 ## 📝 Citation
 
-If you find this repository useful, please consider citing this paper:
-```
-@article{somebody2023,
-  title={paper},
-  author={somebody},
-  journal={arXiv preprint arXiv:},
-  year={2023}
-}
-```
+The related paper will be released soon.
+
