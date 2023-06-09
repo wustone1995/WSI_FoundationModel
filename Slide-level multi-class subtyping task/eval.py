@@ -80,9 +80,9 @@ elif args.task == 'task_2_tumor_subtyping':
     datasetdict = {
         'BRCA':[2, {'IDC':0, 'ILC':1}],
         'RCC':[3, {'CCRCC':0, 'CHRCC':1, 'PRCC':2}],
-        'NSCLC':[2, {'IDC':0, 'ILC':1}],
+        'NSCLC':[2, {'LUAD':0, 'LUSC':1}],
         'CAM16':[2, {'normal':0, 'tumor':1}],
-        'PANDA':[2, {'IDC':0, 'ILC':1}],
+        'PANDA':[2, {'grades0':0, 'grades1':1}],
     }
     args.n_classes= datasetdict[args.dataset][0]
     dataset = Generic_MIL_Dataset(csv_path = args.labelcsv_dir,
