@@ -148,8 +148,8 @@ For this task, we adopted the multiple instance learning (MIL) framework and tes
   </tr>
   <tr>
     <td><a>TCGA-NSCLC</a></td>
-    <td><a>XX.XX</a></td>
-    <td><a>XX.XX</a></td>
+    <td><a>0.8878</a></td>
+    <td><a>0.9539</a></td>
     <td><a>args</a></td>
     <td><a>weights</a></td>
     <td><a>embeddings</a></td>
@@ -164,8 +164,8 @@ For this task, we adopted the multiple instance learning (MIL) framework and tes
   </tr>
   <tr>
     <td><a>PANDA</a></td>
-    <td><a>XX.XX</a></td>
-    <td><a>XX.XX</a></td>
+    <td><a>0.9432</a></td>
+    <td><a>0.9785</a></td>
     <td><a>args</a></td>
     <td><a>weights</a></td>
     <td><a>embeddings</a></td>
