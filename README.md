@@ -30,7 +30,7 @@ Please follow this repository for more updates.
   </tr>
   <tr>
     <td>ViT-S/16 </td>
-    <td align="right">21 M</td>
+    <td align="right">43 M</td>
     <td><a>backbone only</a></td>
     <td><a>full ckpt</a></td>
     <td><a>args</a></td>
@@ -38,7 +38,7 @@ Please follow this repository for more updates.
   </tr>
   <tr>
     <td>ViT-B/16 </td>
-    <td align="right">86 M</td>
+    <td align="right">0.11 B</td>
     <td><a>backbone only</a></td>
     <td><a>full ckpt</a></td>
     <td><a>args</a></td>
@@ -46,7 +46,7 @@ Please follow this repository for more updates.
   </tr>
   <tr>
     <td>ViT-L/16 </td>
-    <td align="right">300 M</td>
+    <td align="right">0.33 B</td>
     <td><a>backbone only</a></td>
     <td><a>full ckpt</a></td>
     <td><a>args</a></td>
@@ -54,7 +54,7 @@ Please follow this repository for more updates.
   </tr>
   <tr>
     <td>ResNet-50</td>
-    <td align="right">23 M</td>
+    <td align="right">49 M</td>
     <td><a>backbone only</a></td>
     <td><a>full ckpt</a></td>
     <td><a>args</a></td>
