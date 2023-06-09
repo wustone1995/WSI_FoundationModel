@@ -1,17 +1,17 @@
-# INTELLIGENS: Providing Better Features for Whole Slide Image Based on Self-distillation 
+# BROWN: Better Features for Whole Slide Image Based on Self-distillation 
 
 **[Zhejiang Lab](https://www.zhejianglab.com/)**
 
 [[`Paper`](https://)] [[`Blog`](https://)] [[`Demo`](https://)] 
 
-This repository provides the official implementation and pretrained models for INTELLIGENS. More details will be included in the related paper which would be released soon.
+This repository provides the official implementation and pretrained models for BROWN. More details will be included in the related paper which would be released soon.
 
-INTELLIGENS models produce robust and high-quality feature representations for whole slide image (WSI). The features can be directly employed with classifiers on slide-level multi-class subtyping problems. These trained models also perform well on patch-level classification tasks with slight fine-tuning. The models were pretrained on a dataset containing more than 10,000 WSIs without using any labels or annotations.
+BROWN models produce robust and high-quality feature representations for whole slide image (WSI). The features can be directly employed with classifiers on slide-level multi-class subtyping problems. These trained models also perform well on patch-level classification tasks with slight fine-tuning. The models were pretrained on a dataset containing more than 10,000 WSIs without using any labels or annotations.
 
 ## Updates / TODOs
 Please follow this repository for more updates.
 
-* 06/09/2023: First upload of INTELLIGENS. The weights of vitb-based backbone is added. The scripts for reproducing the slide-level multi-class subtyping tasks are provided. 
+* 06/09/2023: First upload of BROWN. The weights of vitb-based backbone is added. The scripts for reproducing the slide-level multi-class subtyping tasks are provided. 
 
 
 - [ ] Add results for more downstream tasks.
@@ -77,10 +77,10 @@ Please follow this repository for more updates.
 
 The training is performed using Pytorch on a Linux environment. It requires the main packages metioned above as well as a number of other 3rd party packages. To setup all the required dependencies for training and evaluation, please follow the instructions below:  
 
-*[conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html)* **(Recommended)** - Clone the repository and then create and activate an `INTELLIGENS` conda environment using the provided environment definition `environment.yaml`:
+*[conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html)* **(Recommended)** - Clone the repository and then create and activate an `BROWN` conda environment using the provided environment definition `environment.yaml`:
 ```bash
 conda env create -f environment.yaml
-conda activate INTELLIGENS
+conda activate BROWN
 ```
 *[pip](https://pip.pypa.io/en/stable/getting-started/)* - Clone the repository and then use the provided `requirements.txt` to install the dependencies:
 
