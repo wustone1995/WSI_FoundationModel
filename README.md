@@ -122,35 +122,72 @@ python -m torch.distributed.launch --nproc_per_node=4 --nnodes=1 --node_rank=0 \
 ## Evaluation
 
 ### Slide-level multi-class subtyping task
-For this task, we adopted the multiple instance learning (MIL) framework and test models' performance on several dataset, including TCGA-BRCA, TCGA-RCC, TCGA-NSCLC, [CAMELYON16](https://camelyon16.grand-challenge.org), [PANDA](https://panda.grand-challenge.org), etc. The features for each slides are pre-extracted due to the large scale of WSI. Then the MIL classifier is trained on these features according to the common practices. The extracted feature embeddings, the trained model's weights and the test resluts are provided:
+For this task, we adopted the multiple instance learning (MIL) framework and test models' performance on several dataset, including TCGA-BRCA, TCGA-RCC, TCGA-NSCLC, [CAMELYON16](https://camelyon16.grand-challenge.org), [PANDA](https://panda.grand-challenge.org), etc. The features for each slides are pre-extracted due to the large scale of WSI. Then the MIL classifier is trained on these features according to the common practices. The extracted feature embeddings, the trained models' weights and the test resluts are provided:
 <table style="margin: auto">
   <tr>
     <th>Dataset</th>
     <th>Acc</th>
     <th>AUC</th>
-    <th colspan="2">download</th>
+    <th colspan="3">download</th>
   </tr>
   <tr>
-    <td><a href="https://dl.fbaipublicfiles.com/dino/dino_deitsmall16_pretrain/dino_deitsmall16_pretrain.pth">TCGA-BRCA</a></td>
-    <td><a href="https://dl.fbaipublicfiles.com/dino/dino_deitsmall16_pretrain/dino_deitsmall16_pretrain_full_checkpoint.pth">full ckpt</a></td>
-    <td><a href="https://dl.fbaipublicfiles.com/dino/dino_deitsmall16_pretrain/args.txt">args</a></td>
-    <td><a href="https://dl.fbaipublicfiles.com/dino/dino_deitsmall16_pretrain/dino_deitsmall16_pretrain_log.txt">logs</a></td>
+    <td><a>TCGA-BRCA</a></td>
+    <td><a>XX.XX</a></td>
+    <td><a>XX.XX</a></td>
+    <td><a>args</a></td>
+    <td><a>weights</a></td>
+    <td><a>embeddings</a></td>
+  </tr>
+  <tr>
+    <td><a>TCGA-RCC</a></td>
+    <td><a>XX.XX</a></td>
+    <td><a>XX.XX</a></td>
+    <td><a>args</a></td>
+    <td><a>weights</a></td>
+    <td><a>embeddings</a></td>
+  </tr>
+  <tr>
+    <td><a>TCGA-NSCLC</a></td>
+    <td><a>XX.XX</a></td>
+    <td><a>XX.XX</a></td>
+    <td><a>args</a></td>
+    <td><a>weights</a></td>
+    <td><a>embeddings</a></td>
+  </tr>
+  <tr>
+    <td><a>CAMELYON16</a></td>
+    <td><a>0.9535</a></td>
+    <td><a>0.9756</a></td>
+    <td><a>args</a></td>
+    <td><a>weights</a></td>
+    <td><a>embeddings</a></td>
+  </tr>
+  <tr>
+    <td><a>PANDA</a></td>
+    <td><a>XX.XX</a></td>
+    <td><a>XX.XX</a></td>
+    <td><a>args</a></td>
+    <td><a>weights</a></td>
+    <td><a>embeddings</a></td>
   </tr>
 </table>
 You can easily reproduce the test results by downloading the feature embeddings and running
+
 ```bash
 python 
 ```
 
 
 
-Here, we provide an example using [CLAM](https://github.com/mahmoodlab/CLAM) as classifier.  
+Here, we provide an example using [CLAM](https://github.com/mahmoodlab/CLAM) as classifier for training and testing.  
 
 **Data Preparation**
-Download or generate the feature embeddings using the pre-trained models provided at [pretrained models section](https://github.com/wustone1995/WSI_FoundationModel#pretrained-models). The following example assumes the embedding files are stored under a folder named FEAT_DIRECTORY.
+Download or generate the feature embeddings using the pre-trained models provided at [pretrained models section](https://github.com/wustone1995/WSI_FoundationModel#pretrained-models). 
 ```bash
 python feature_extract.py
 ```
+The following example assumes the embedding files are stored under a folder named FEAT_DIRECTORY.
+
 ```bash
 FEAT_DIRECTORY/
     pt_files/
