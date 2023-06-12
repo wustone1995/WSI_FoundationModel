@@ -30,6 +30,8 @@ path_to_feature_filepath/
 
 # Generic training settings
 parser = argparse.ArgumentParser(description='Configurations for WSI Training')
+parser.add_argument('--dataset', type=str, default='', required=True,
+                    choices=['BRCA', 'RCC', 'CAM16', 'PANDA', 'NSCLC'], help='dataset select')
 parser.add_argument('--data_root_dir', type=str, default='path_to_feature_filepath', 
                     help='data directory')
 parser.add_argument('--csv_path', type=str, default='dataset_csv/PANDA_subtyping2.csv', help='csv file')
@@ -92,6 +94,7 @@ def seed_torch(seed=7):
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
 if os.path.exists(args.exp_info):
+    print('load setting from file')
     with open(args.exp_info, 'r') as f:
         exp_info = f.read()
     exp_set_info = ast.literal_eval(exp_info)
@@ -115,6 +118,16 @@ if os.path.exists(args.exp_info):
     args.inst_loss = exp_set_info['inst_loss']
     args.B = exp_set_info['B']
     args.n_classes = exp_set_info['n_classes']
+    # args.split_dir = exp_set_info['split_dir']
+
+datasetdict = {
+        'BRCA':[2, {'IDC':0, 'ILC':1}],
+        'RCC':[3, {'CCRCC':0, 'CHRCC':1, 'PRCC':2}],
+        'NSCLC':[2, {'LUAD':0, 'LUSC':1}],
+        'CAM16':[2, {'normal':0, 'tumor':1}],
+        'PANDA':[2, {'grades0':0, 'grades1':1}],
+    }
+
 seed_torch(args.seed)
 # encoding_size = 1024
 settings = {'num_splits': args.k, 
@@ -155,8 +168,8 @@ if args.task == 'task_1_tumor_vs_normal':
     raise NotImplementedError
 
 elif args.task == 'task_2_tumor_subtyping':
-    
-    label_dict = ast.literal_eval(args.label_dict)
+    label_dict = datasetdict[args.dataset][1]
+    # label_dict = ast.literal_eval(args.label_dict)
     dataset = Generic_MIL_Dataset(csv_path = args.csv_path,
                             # data_dir= os.path.join(args.data_root_dir, 'data_pt'),
                             data_dir= args.data_root_dir, 
@@ -183,7 +196,8 @@ if not os.path.isdir(args.results_dir):
 if args.split_dir is None:
     args.split_dir = os.path.join('splits', args.task+'_{}'.format(int(args.label_frac*100)))
 else:
-    args.split_dir = os.path.join('splits', args.split_dir)
+    # args.split_dir = os.path.join('splits', args.split_dir)
+    args.split_dir = args.split_dir
 
 print('split_dir: ', args.split_dir)
 assert os.path.isdir(args.split_dir)
