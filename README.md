@@ -215,7 +215,7 @@ FEAT_DIRECTORY/
 The arguments used during training can be found in the `args` column of the [Slide-level multi-class subtyping task sections](https://github.com/wustone1995/WSI_FoundationModel#slide-level-multi-class-subtyping-task).
 Then train and test the model by 
 ```bash
-cd ".."
+cd ..
 python main.py \
     --data_root_dir <FEAT_DIRECTORY/path_saving_features> \
     --split_dir 'BRCA_subtyping2' \
