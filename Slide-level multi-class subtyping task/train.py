@@ -75,7 +75,8 @@ parser.add_argument('--subtyping', action='store_true', default=True,
                      help='subtyping problem')
 parser.add_argument('--bag_weight', type=float, default=0.7,
                     help='clam: weight coefficient for bag-level loss (default: 0.7)')
-parser.add_argument('--B', type=int, default=8, help='numbr of positive/negative patches to sample for clam')
+parser.add_argument('--B', type=int, default=8, help='number of positive/negative patches to sample for clam')
+parser.add_argument('--n_classes', type=int, default=2, help='number of classes')
 args = parser.parse_args()
 device=torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # print(f'the device is {device}')
@@ -91,30 +92,30 @@ def seed_torch(seed=7):
         torch.cuda.manual_seed_all(seed) # if you are using multi-GPU.
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
-
-with open(args.exp_info, 'r') as f:
-    exp_info = f.read()
-exp_set_info = ast.literal_eval(exp_info)
-args.k = exp_set_info['num_splits']
-args.k_start = exp_set_info['k_start']
-args.k_end = exp_set_info['k_end']
-args.task = exp_set_info['task']
-args.max_epochs = exp_set_info['max_epochs']
-args.results_dir = exp_set_info['results_dir']
-args.lr = exp_set_info['lr']
-args.reg = exp_set_info['reg']
-args.label_frac = exp_set_info['label_frac']
-args.bag_loss = exp_set_info['bag_loss']
-args.seed = exp_set_info['seed']
-args.model_type = exp_set_info['model_type']
-args.model_size = exp_set_info['model_size']
-args.drop_out = exp_set_info["use_drop_out"]
-args.weighted_sample = exp_set_info['weighted_sample']
-args.opt = exp_set_info['opt']
-args.bag_weight = exp_set_info['bag_weight']
-args.inst_loss = exp_set_info['inst_loss']
-args.B = exp_set_info['B']
-args.n_classes = exp_set_info['n_classes']
+if os.path.exists(args.exp_info):
+    with open(args.exp_info, 'r') as f:
+        exp_info = f.read()
+    exp_set_info = ast.literal_eval(exp_info)
+    args.k = exp_set_info['num_splits']
+    args.k_start = exp_set_info['k_start']
+    args.k_end = exp_set_info['k_end']
+    args.task = exp_set_info['task']
+    args.max_epochs = exp_set_info['max_epochs']
+    args.results_dir = exp_set_info['results_dir']
+    args.lr = exp_set_info['lr']
+    args.reg = exp_set_info['reg']
+    args.label_frac = exp_set_info['label_frac']
+    args.bag_loss = exp_set_info['bag_loss']
+    args.seed = exp_set_info['seed']
+    args.model_type = exp_set_info['model_type']
+    args.model_size = exp_set_info['model_size']
+    args.drop_out = exp_set_info["use_drop_out"]
+    args.weighted_sample = exp_set_info['weighted_sample']
+    args.opt = exp_set_info['opt']
+    args.bag_weight = exp_set_info['bag_weight']
+    args.inst_loss = exp_set_info['inst_loss']
+    args.B = exp_set_info['B']
+    args.n_classes = exp_set_info['n_classes']
 seed_torch(args.seed)
 # encoding_size = 1024
 settings = {'num_splits': args.k, 
