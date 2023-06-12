@@ -182,7 +182,7 @@ python eval.py \
     --dataset <name of dataset> \
     --data_root_dir <directory to your data> \
     --models_exp_code <directory to checkpoints> \
-    --save_exp_code <directory to save the eval results, it will be under ./results/> \
+    --save_exp_code <directory to save the eval results, it will be under ./eval_results/> \
     --labelcsv_dir <directory to save the eval results, which can be found at ./dataset_csv> \
     --splits_dir <data split folder, which can be found at ./splits> \
     --k <cross validation folds number>
