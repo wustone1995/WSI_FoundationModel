@@ -22,7 +22,6 @@ import numpy as np
 import ast
 '''
 path_to_feature_filepath/
-    ├──data_pt/
         ├── slide_1.pt
         ├── slide_2.pt
         └── ...
