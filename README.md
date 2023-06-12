@@ -69,7 +69,6 @@ Please follow this repository for more updates.
 > Linux (Tested on Ubuntu 18.04)   
 > Python==3.9.16  
 > Pytorch==2.0.0  
-> torch==1.11.0  
 > torchvision==0.15.0    
 > openslide-python==1.2.0  
 > opencv-python==4.7.0.72  
