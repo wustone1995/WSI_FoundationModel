@@ -144,8 +144,8 @@ For this task, we adopted the multiple instance learning (MIL) framework and tes
   </tr>
   <tr>
     <td><a>TCGA-RCC</a></td>
-    <td><a>0.9600</a></td>
-    <td><a>0.9940</a></td>
+    <td><a>0.9511</a></td>
+    <td><a>0.9942</a></td>
     <td><a href="https://drive.google.com/file/d/1g2RpwL_3mbCY-ObgWsI1Aw_hhFNLIGTA/view?usp=sharing">args</a></td>
     <td><a href="https://drive.google.com/drive/folders/1j507hbDXvWJP1slLRbt44DlztMg0qcDT?usp=sharing">weights</a></td>
     <td><a href="https://pan.baidu.com/s/1jWhIuwFTA4yumG08lo7KAA?pwd=wsoc">embeddings</a></td>
