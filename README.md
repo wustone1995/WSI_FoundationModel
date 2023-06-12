@@ -13,7 +13,7 @@ Please follow this repository for more updates.
 
 * 06/09/2023: First upload of BROWN. The weights of vitb-based backbone is added. The scripts for reproducing the slide-level multi-class subtyping tasks are provided. 
 
-
+- [ ] Add requirements.txt.
 - [ ] Add results for more downstream tasks.
 - [ ] Add pretrained model weights with different scale of parameter numbers.
 - [ ] Provide a jupyter notebook for the complete workflow.
