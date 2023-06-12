@@ -216,11 +216,11 @@ Then train and test the model by
 ```bash
 cd ..
 python train.py \
+    --dataset BRCA
     --data_root_dir <FEAT_DIRECTORY/path_saving_features> \
-    --split_dir 'BRCA_subtyping2' \
+    --split_dir 'splits/BRCA_subtyping2' \
     --exp_info 'experiment_task_2_tumor_subtyping_brca.txt' \
     --csv_path 'dataset_csv/BRCA_subtyping2.csv' \
-    --label_dict "{'IDC':0, 'ILC':1}" \
     --exp_code 'task_2_tumor_subtyping_brca'
     
 python eval.py \
