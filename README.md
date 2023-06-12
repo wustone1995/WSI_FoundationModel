@@ -215,7 +215,7 @@ The arguments used during training can be found in the `args` column of the [Sli
 Then train and test the model by 
 ```bash
 cd ..
-python main.py \
+python train.py \
     --data_root_dir <FEAT_DIRECTORY/path_saving_features> \
     --split_dir 'BRCA_subtyping2' \
     --exp_info 'experiment_task_2_tumor_subtyping_brca.txt' \
