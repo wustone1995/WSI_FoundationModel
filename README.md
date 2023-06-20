@@ -218,7 +218,7 @@ python eval.py \
 Here, we provide a complete example using [CLAM](https://github.com/mahmoodlab/CLAM) as classifier for training and testing on TCGA-BRCA dataset.  
 
 **Data Preparation**
-Download the feature embeddings from `embeddings` column in the table mentioned at [Slide-level multi-class subtyping task section](https://github.com/wustone1995/WSI_FoundationModel/tree/main#slide-level-multi-class-subtyping-task). Or generate them using the pre-trained models provided at [Links/Model](https://drive.google.com/drive/folders/184TSs-rlzdttVWbRHIPCZgEYqIQNb9WB?usp=sharing). The original WSI data can be downloaded using the [Dateset links](https://github.com/wustone1995/WSI_FoundationModel/tree/main#dataset). 
+Download the feature embeddings from `embeddings` column in the table mentioned at [Slide-level multi-class subtyping task section](https://github.com/wustone1995/WSI_FoundationModel/tree/main#slide-level-multi-class-subtyping-task). Or generate them using the pre-trained models provided at [Links/Model](https://drive.google.com/drive/folders/184TSs-rlzdttVWbRHIPCZgEYqIQNb9WB?usp=sharing). The original WSI data can be founded at the [Dateset links](https://github.com/wustone1995/WSI_FoundationModel/tree/main#dataset). 
 ```bash
 cd "Slide-level multi-class subtyping task/feature_extract"
 python extract_features.py \
