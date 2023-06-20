@@ -1,26 +1,33 @@
-# BROWN: Better Features for Whole Slide Image Based on Self-distillation 
+# BROW: Better Features for Whole Slide Image Based on Self-distillation 
 
-**[Zhejiang Lab](https://www.zhejianglab.com/)**
 
-[[`Paper`](https://)] [[`Blog`](https://)] [[`Demo`](https://)] 
+This repository provides the official implementation and pretrained models for BROW. More details will be included in the related paper which would be released soon.
 
-This repository provides the official implementation and pretrained models for BROWN. More details will be included in the related paper which would be released soon.
+## Key Features
+* Developed a foundation model for Whole Slide Image (WSI) analysis. The model was pretrained on a dataset containing more than 10,000 WSIs without using any labels or annotations.
+* The model produces robust and high-quality feature representations for WSI.
+* The features can be directly employed with classifiers on slide-level multi-class subtyping problems. The trained model also performs well on patch-level classification tasks with slight fine-tuning. 
 
-BROWN models produce robust and high-quality feature representations for whole slide image (WSI). The features can be directly employed with classifiers on slide-level multi-class subtyping problems. These trained models also perform well on patch-level classification tasks with slight fine-tuning. The models were pretrained on a dataset containing more than 10,000 WSIs without using any labels or annotations.
+## Links
 
+- Paper
+- [Model](https://drive.google.com/drive/folders/184TSs-rlzdttVWbRHIPCZgEYqIQNb9WB?usp=sharing)
+- [Code](https://) 
+
+<!---
 ## Updates / TODOs
 Please follow this repository for more updates.
 
-* 06/09/2023: First upload of BROWN. The weights of vitb-based backbone is added. The scripts for reproducing the slide-level multi-class subtyping tasks are provided. 
+* 06/09/2023: First upload of BROW. The weights of vitb-based backbone is added. The scripts for reproducing the slide-level multi-class subtyping tasks are provided. 
 
 - [ ] Add requirements.txt.
 - [ ] Add results for more downstream tasks.
 - [ ] Add pretrained model weights with different scale of parameter numbers.
 - [ ] Provide a jupyter notebook for the complete workflow.
 - [ ] ...
+-->
 
-
-
+<!---
 ## Pretrained models
 <table style="margin: auto">
   <tr>
@@ -61,31 +68,34 @@ Please follow this repository for more updates.
     <td><a>logs</a></td>
   </tr>
 </table>
+-->
 
-
-## Installation
-
-**Some Main Requirements**  
+## Get Started
+**Main Requirements**    
 > Linux (Tested on Ubuntu 18.04)   
 > Python==3.9.16  
-> Pytorch==2.0.0  
-> torchvision==0.15.0    
+> Pytorch==1.12.0  
+> torchvision==0.13.0    
 > openslide-python==1.2.0  
-> opencv-python==4.7.0.72  
+> opencv-python==4.7.0.72
 
+**Installation**
 
 The training is performed using Pytorch on a Linux environment. It requires the main packages metioned above as well as a number of other 3rd party packages. To setup all the required dependencies for training and evaluation, please follow the instructions below:  
 
-*[conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html)* **(Recommended)** - Clone the repository and then create and activate an `BROWN` conda environment using the provided environment definition `environment.yaml`:
+*[conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html)* **(Recommended)** - Clone the repository and then create and activate a `BROW` conda environment using the provided environment definition `environment.yaml`:
 ```bash
 conda env create -f environment.yaml
-conda activate BROWN
+conda activate BROW
 ```
+Please refer to [Installation guide](/Docs/INSTALLATION.md) for more details about installation.
+<!---
 *[pip](https://pip.pypa.io/en/stable/getting-started/)* - Clone the repository and then use the provided `requirements.txt` to install the dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
+-->
 ## Dataset
 
 **Dataset Links**
@@ -111,19 +121,25 @@ DATA_DIRECTORY/
 ```
 ## Training
 
-This codebase was developed with Python version 3.9.16, PyTorch version 2.0.0, CUDA 11.7 and torchvision 0.15.0. The arguments used can be found in the `args` column of the [pretrained models section](https://github.com/facebookresearch/dino#pretrained-models). Following is a vanilla training implementation example on 1 nodes with 4 GPUs (total 4 GPUs):
+This codebase was developed with Python version 3.9.16, PyTorch version 1.12.0, CUDA 11.7 and torchvision 0.13.0. The arguments used can be found in [Links/Model](https://drive.google.com/drive/folders/184TSs-rlzdttVWbRHIPCZgEYqIQNb9WB?usp=sharing). Following is a vanilla training implementation example on 1 nodes with 4 GPUs (total 4 GPUs):
 ```bash
-python -m torch.distributed.launch --nproc_per_node=4 \
-    --nnodes=1 --node_rank=0 \
-    --master_addr="xx.xxx.xxx.xxx" --master_port=xxxx  \
-    train.py --patch_size 16 \
-    --arch "vit_base" --batch_size_per_gpu xxx \
-    --use_fp16 0 --output_dir ./output_dir 
+python -m torch.distributed.launch \
+    --nproc_per_node=4 \
+    --nnodes=1 \
+    --node_rank=0 \
+    --master_addr="xx.xxx.xxx.xxx" \
+    --master_port=xxxx \
+    train.py \
+    --patch_size 16 \
+    --arch "vit_base" \
+    --batch_size_per_gpu xxx \
+    --use_fp16 0 \
+    --output_dir ./output_dir 
 ```
 
 ## Downstream Task
 
-You can use the models mentioned at [pretrained models section](https://github.com/wustone1995/WSI_FoundationModel#pretrained-models) for various downstream tasks. The model can be easily initialized with the backbone weights using the genmodel() function in `genmodel.py`. 
+You can use the pre-trained model for various downstream tasks and the weights can be found at [Links/Model](https://drive.google.com/drive/folders/184TSs-rlzdttVWbRHIPCZgEYqIQNb9WB?usp=sharing). The model can be easily initialized with the backbone weights using the genmodel() function in `genmodel.py`. 
 
 ### Slide-level multi-class subtyping task
 For this task, we adopted the multiple instance learning (MIL) framework and test models' performance on several dataset, including [TCGA-BRCA](https://www.cancer.gov/ccg/research/genome-sequencing/tcga), [TCGA-RCC](https://www.cancer.gov/ccg/research/genome-sequencing/tcga), [TCGA-NSCLC](https://www.cancer.gov/ccg/research/genome-sequencing/tcga), [CAMELYON16](https://camelyon16.grand-challenge.org), [PANDA](https://panda.grand-challenge.org), etc. The features for each slides are pre-extracted due to the large scale of WSI. Then the MIL classifier is trained on these features according to the common practices. The extracted feature embeddings, the trained models' weights and the test resluts are provided:
@@ -187,11 +203,22 @@ python eval.py \
     --splits_dir <data split folder, which can be found at ./splits> \
     --k <cross validation folds number>
 ```
+Here is an example for evaluation on TCGA-BRCA dataset. It assumes the feature embeddings are stored at `./BRCA/pt_files`, the checkpoints at `./FINAL_CKPT_CLAM/clam_BRCA`, the directory for saving the eval results is `./eval_results/clam_BRCA`: 
+```bash
+python eval.py \
+    --dataset BRCA \
+    --data_root_dir ./BRCA/pt_files \
+    --models_exp_code ./FINAL_CKPT_CLAM/clam_BRCA \
+    --save_exp_code clam_BRCA \
+    --labelcsv_dir ./dataset_csv/BRCA_subtyping2.csv \
+    --splits_dir ./splits/BRCA_subtyping2 \
+    --k 10
+```
 
-Here, we provide an example using [CLAM](https://github.com/mahmoodlab/CLAM) as classifier for training and testing on TCGA-BRCA dataset.  
+Here, we provide a complete example using [CLAM](https://github.com/mahmoodlab/CLAM) as classifier for training and testing on TCGA-BRCA dataset.  
 
 **Data Preparation**
-Download or generate the feature embeddings using the pre-trained models provided at [pretrained models section](https://github.com/wustone1995/WSI_FoundationModel#pretrained-models). 
+Download the feature embeddings from `embeddings` column in the table mentioned at [Slide-level multi-class subtyping task section](https://github.com/wustone1995/WSI_FoundationModel/tree/main#slide-level-multi-class-subtyping-task). Or generate them using the pre-trained models provided at [Links/Model](https://drive.google.com/drive/folders/184TSs-rlzdttVWbRHIPCZgEYqIQNb9WB?usp=sharing). The original WSI data can be downloaded using the [Dateset links](https://github.com/wustone1995/WSI_FoundationModel/tree/main#dataset). 
 ```bash
 cd "Slide-level multi-class subtyping task/feature_extract"
 python extract_features.py \
@@ -216,7 +243,7 @@ Then train and test the model by
 ```bash
 cd ..
 python train.py \
-    --dataset BRCA
+    --dataset BRCA \
     --data_root_dir <FEAT_DIRECTORY/path_saving_features> \
     --split_dir 'splits/BRCA_subtyping2' \
     --exp_info 'args/experiment_task_2_tumor_subtyping_brca.txt' \
