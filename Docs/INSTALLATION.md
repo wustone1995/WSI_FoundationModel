@@ -1,39 +1,38 @@
-CLAM Installation Guide <img src="clam-logo.png" width="350px" align="right" />
+Installation Guide
 ===========
-For instructions on installing anaconda on your machine (download the distribution that comes with python 3):
-https://www.anaconda.com/distribution/
-
-After setting up anaconda, first install openslide:
-```shell
-sudo apt-get install openslide-tools
+After setting up anaconda, you can create and activate a `BROW` conda environment using the provided environment definition `environment.yaml`:
+```bash
+conda env create -f environment.yaml
+conda activate BROW
 ```
+Or you can install the enviroment step by step:
 
-Next, use the environment configuration file located in **docs/clam.yaml** to create a conda environment:
-```shell
-conda env create -n clam -f docs/clam.yaml
+```bash
+conda create -n BROW python=3.9.16
+conda activate BROW
+conda install pytorch==1.12.0 torchvision==0.13.0 torchaudio==0.12.0 -c pytorch
 ```
-
-Activate the environment:
-```shell
-conda activate clam
+Then install the required packages for pre-training:
+```bash
+pip install pandas 
+pip install timm
+pip install opencv-python
+pip install openslide-python
+pip install matplotlib
+pip install h5py
 ```
+So far the enviroment is ready for model pre-training.
 
-Once inside the created environment, to install smooth-topk (first cd to a location that is outside the project folder and is suitable for cloning new git repositories):
-
-```shell
+To reproduce the results of slide-level subtyping tasks, some extra packages are needed:
+```bash
+pip install scipy 
+pip install scikit-learn
+pip install tensorboard 
+pip install future
+```
+Please note that the package smooth-topk is installed by:
+```bash
 git clone https://github.com/oval-group/smooth-topk.git
 cd smooth-topk
 python setup.py install
 ```
-
-When done running experiments, to deactivate the environment:
-```shell
-conda deactivate clam
-```
-Please report any issues in the public forum.
-
-## Using .svs files:
-Note that CLAM uses openslide, which relies on the pixman library, and pixman version 0.38 has a known glitch that causes certain downsamples of some .svs files to be read incorrectly. See [here](https://github.com/mahmoodlab/CLAM/issues/13) for examples, discussion and possible workarounds (the exact solution might differ depending on how your conda environment is setup).  
-
-
-[Return to main page.](README.md)
