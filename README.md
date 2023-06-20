@@ -271,7 +271,7 @@ python eval.py \
 - Code for weakly-supervised subtyping was largely adapted from [CLAM](https://github.com/mahmoodlab/CLAM) and [DTFD-MIL](https://github.com/hrzhang1123/DTFD-MIL).
 - Code for self-supervised pretraining was largely adapted via making modifications to [DINO](https://github.com/facebookresearch/dino)
 -->
-- Code for weakly-supervised subtyping was largely adapted from [CLAM](https://github.com/mahmoodlab/CLAM).
+- Code for slide-level subtyping tasks was largely adapted from [CLAM](https://github.com/mahmoodlab/CLAM).
 
 
 
