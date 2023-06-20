@@ -121,7 +121,7 @@ DATA_DIRECTORY/
 ```
 ## Training
 
-This codebase was developed with Python version 3.9.16, PyTorch version 1.12.0, CUDA 11.7 and torchvision 0.13.0. The arguments used can be found in [Links/Model](https://drive.google.com/drive/folders/184TSs-rlzdttVWbRHIPCZgEYqIQNb9WB?usp=sharing). Following is a vanilla training implementation example on 1 nodes with 4 GPUs (total 4 GPUs):
+This codebase was developed with Python version 3.9.16, PyTorch version 1.12.0, CUDA 11.7 and torchvision 0.13.0. The training log can be found at [Links/Model](https://drive.google.com/drive/folders/184TSs-rlzdttVWbRHIPCZgEYqIQNb9WB?usp=sharing). Following is a vanilla training implementation example on 1 nodes with 4 GPUs (total 4 GPUs):
 ```bash
 python -m torch.distributed.launch \
     --nproc_per_node=4 \
