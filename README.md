@@ -168,11 +168,11 @@ For this task, we adopted the multiple instance learning (MIL) framework and tes
   </tr>
   <tr>
     <td><a>TCGA-NSCLC</a></td>
-    <td><a>0.8936</a></td>
-    <td><a>0.9602</a></td>
-    <td><a>args</a></td>
-    <td><a>weights</a></td>
-    <td><a>embeddings</a></td>
+    <td><a>0.8818</a></td>
+    <td><a>0.9606</a></td>
+    <td><a href="https://drive.google.com/file/d/1PdJ7HNLFT4y3E5JrY32p0mtN0p3ex-RB/view?usp=sharing">args</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1gxHz0NrxjCLPFMvsLVM6r0aJ-1owjscN?usp=sharing">weights</a></td>
+    <td><a href="https://pan.baidu.com/s/11M7ZrJAg5KMsEW2_FvxzhQ?pwd=k6p8">embeddings</a></td>
   </tr>
   <tr>
     <td><a>CAMELYON16</a></td>
@@ -184,11 +184,11 @@ For this task, we adopted the multiple instance learning (MIL) framework and tes
   </tr>
   <tr>
     <td><a>PANDA</a></td>
-    <td><a>0.9411</a></td>
-    <td><a>0.9800</a></td>
-    <td><a>args</a></td>
-    <td><a>weights</a></td>
-    <td><a>embeddings</a></td>
+    <td><a>0.9407</a></td>
+    <td><a>0.9802</a></td>
+    <td><a href="https://drive.google.com/file/d/1i2VvmVAfuG46nbEnLkLGW8ZBIJWKbTLr/view?usp=sharing">args</a></td>
+    <td><a href="https://drive.google.com/drive/folders/12Ofl1A2M-CdxDEcWS8hUoeJck6zQKsH-?usp=sharing">weights</a></td>
+    <td><a href="https://pan.baidu.com/s/1I0Tc2sJBZ1hCneR8ucP3xg?pwd=y9bn">embeddings</a></td>
   </tr>
 </table>
 You can easily reproduce the test results by downloading the feature embeddings and running
