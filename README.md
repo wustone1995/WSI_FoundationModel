@@ -253,7 +253,7 @@ python train.py \
 python eval.py \
     --dataset BRCA \
     --data_root_dir <FEAT_DIRECTORY/path_saving_features> \
-    --models_exp_code 'task_2_tumor_subtyping_brca' \
+    --models_exp_code './results/task_2_tumor_subtyping_brca_s1' \
     --save_exp_code 'task_2_tumor_subtyping_brca' \
     --labelcsv_dir 'dataset_csv/BRCA_subtyping2.csv' \
     --splits_dir 'splits/BRCA_subtyping2' \
